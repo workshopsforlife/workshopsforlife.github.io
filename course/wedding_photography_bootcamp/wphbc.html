@@ -786,18 +786,18 @@
 
 <div class="col-sm-12 col-lg-4 col-md-12 ">
     <div class="alert alert-secondary py-4 text-secondary">
-        <img src="https://workshopsforlife.github.io/assets/icon/cryptocurrency-icons-master/svg/icon/btc.svg" class=""/><span class="px-2">Bitcoin</span>
+        <img src="https://workshopsforlife.github.io/assets/icon/cryptocurrency-icons-master/svg/icon/btc.svg" class=""/><span class="px-2">Bitcoin</span><span class="btc-price"></span>
     </div>
 </div>
 <div class="col-sm-12 col-lg-4 col-md-12 ">
     <div class="alert alert-secondary py-4 text-secondary">
          <img src="https://workshopsforlife.github.io/assets/icon/cryptocurrency-icons-master/svg/icon/bch.svg" class=""/><span class="px-2">Bitcoin Cash
-</span><i class="fa fa-arrow-circle-down float-right py-1"></i>
+</span>
     </div>
 </div>
     <div class="col-sm-12 col-lg-4 col-md-12 ">
     <div class="alert alert-secondary py-4 text-secondary">
-         <img src="https://workshopsforlife.github.io/assets/icon/cryptocurrency-icons-master/svg/icon/eth.svg" class=""/><span class="px-2">Ethereum</span><i class="fa fa-arrow-circle-down float-right py-1"></i>
+         <img src="https://workshopsforlife.github.io/assets/icon/cryptocurrency-icons-master/svg/icon/eth.svg" class=""/><span class="px-2">Ethereum</span>
     </div>
 </div>
 </div>
@@ -806,18 +806,18 @@
 
 <div class="col-sm-12 col-lg-4 col-md-12 ">
     <div class="alert alert-secondary py-4 text-secondary">
-         <img src="https://workshopsforlife.github.io/assets/icon/cryptocurrency-icons-master/svg/icon/ltc.svg" class=""/></i><span class="px-2" style="max-width: 10px;">Litecoin</span><i class="fa fa-arrow-circle-down py-1 float-right"></i>
+         <img src="https://workshopsforlife.github.io/assets/icon/cryptocurrency-icons-master/svg/icon/ltc.svg" class=""/></i><span class="px-2" style="max-width: 10px;">Litecoin</span>
     </div>
 </div>
 <div class="col-sm-12 col-lg-4 col-md-12 ">
     <div class="alert alert-secondary py-4 text-secondary">
          <img src="https://workshopsforlife.github.io/assets/icon/cryptocurrency-icons-master/svg/icon/xlm.svg" class=""/><span class="px-2">Stellar
-</span><i class="fa fa-arrow-circle-down float-right py-1"></i>
+</span>
     </div>
 </div>
     <div class="col-sm-12 col-lg-4 col-md-12 ">
     <div class="alert alert-secondary py-4 text-secondary">
-         <img src="https://workshopsforlife.github.io/assets/icon/cryptocurrency-icons-master/svg/icon/ada.svg" class=""/><span class="px-2">Cardano</span><i class="fa fa-arrow-circle-down float-right py-1"></i>
+         <img src="https://workshopsforlife.github.io/assets/icon/cryptocurrency-icons-master/svg/icon/ada.svg" class=""/><span class="px-2">Cardano</span>
     </div>
 </div>
 </div>
@@ -826,18 +826,18 @@
 
 <div class="col-sm-12 col-lg-4 col-md-12 ">
     <div class="alert alert-secondary py-4 text-secondary">
-         <img src="https://workshopsforlife.github.io/assets/icon/cryptocurrency-icons-master/svg/icon/neo.svg" class=""/></i><span class="px-2" style="max-width: 10px;">NEO</span><i class="fa fa-arrow-circle-down py-1 float-right"></i>
+         <img src="https://workshopsforlife.github.io/assets/icon/cryptocurrency-icons-master/svg/icon/neo.svg" class=""/></i><span class="px-2" style="max-width: 10px;">NEO</span>
     </div>
 </div>
 <div class="col-sm-12 col-lg-4 col-md-12 ">
     <div class="alert alert-secondary py-4 text-secondary">
          <img src="https://workshopsforlife.github.io/assets/icon/cryptocurrency-icons-master/svg/icon/trx.svg" class=""/></i><span class="px-2">TRON
-</span><i class="fa fa-arrow-circle-down float-right py-1"></i>
+</span>
     </div>
 </div>
     <div class="col-sm-12 col-lg-4 col-md-12 ">
     <div class="alert alert-secondary py-4 text-secondary">
-         <img src="https://workshopsforlife.github.io/assets/icon/cryptocurrency-icons-master/svg/icon/xmr.svg" class=""/><span class="px-2">Monero</span><i class="fa fa-arrow-circle-down float-right py-1"></i>
+         <img src="https://workshopsforlife.github.io/assets/icon/cryptocurrency-icons-master/svg/icon/xmr.svg" class=""/><span class="px-2">Monero</span>
     </div>
 </div>
 </div>
@@ -859,6 +859,17 @@
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/js/lightbox.min.js"></script>
             <script src="assets/js/script.min.js?h=b8a61ec70c15f9f08da2516776e9dfd2"></script>
+			<script src="https://workshopsforlife.github.io/assets/js/cryptoPrice.js">
+				window.onload = function() {
+				  $('.btc-price').text('$'+btcPrice());
+				  $('.bch-price').text('$'+bchPrice());
+				  $('.eth-price').text('$'+ethPrice());
+				  $('.ltc-price').text('$'+ltcPrice());
+				  $('.xrp-price').text('$'+xrpPrice());
+				  $('.ada-price').text('$'+adaPrice());
+				  $('.neo-price').text('$'+neoPrice());
+				};
+			</script>
 </body>
 
 </html>
