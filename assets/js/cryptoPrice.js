@@ -31,7 +31,7 @@ function getCurrentPrice(url){
 			alert('Something went wrong: ' + err);
 		  } else {
 			// aqui el codigo para obtener el dato que se está buscando. Por ejemplo el balance de la moneda en una billetera.
-			alert('Your query count: ' + data.query.count);
+			return data;
 		  }
 		});
 }
