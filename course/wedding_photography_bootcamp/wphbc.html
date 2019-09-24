@@ -31,7 +31,7 @@
         </div>
     </div>
 </nav>
-    <header id="course" class="masthead" style="background-image: url(&quot;assets/img/2115-1.png?h=a38e1efe2d40df95db21271358de1a02&quot;);">
+    <header id="course" class="masthead" style="background-image: url('assets/img/2115-1.png?h=a38e1efe2d40df95db21271358de1a02');">
         <div class="container">
             <div class="intro-text">
                 <div class="intro-lead-in"><span>Sal Cincotta</span></div>
@@ -784,19 +784,19 @@
             <div class="container py-1">
 <div class="row py-1">
 
-<div class="col-sm-12 col-lg-4 col-md-12 py-2">
-    <button class="btn btn-lg btn-block btn-secondary py-4 ">
+<div class="col-sm-12 col-lg-4 col-md-12 py-2 ">
+    <button id="bitcoin" class="btn btn-lg btn-block btn-secondary py-4 crypto">
         <img src="https://workshopsforlife.github.io/assets/icon/cryptocurrency-icons-master/svg/icon/btc.svg" class=""/><span class="px-3">Bitcoin</span>
     </button>
 </div>
-<div class="col-sm-12 col-lg-4 col-md-12 py-2">
-    <button class="btn btn-lg btn-block btn-secondary py-4 ">
+<div class="col-sm-12 col-lg-4 col-md-12 py-2 ">
+    <button id="bitcoincash" class="btn btn-lg btn-block btn-secondary py-4  crypto">
          <img src="https://workshopsforlife.github.io/assets/icon/cryptocurrency-icons-master/svg/icon/bch.svg" class=""/><span class="px-3">Bitcoin Cash
 </span>
     </button>
 </div>
-    <div class="col-sm-12 col-lg-4 col-md-12 py-2">
-    <button class="btn btn-lg btn-block btn-secondary py-4 ">
+    <div class="col-sm-12 col-lg-4 col-md-12 py-2 ">
+    <button id="ethereum" class="btn btn-lg btn-block btn-secondary py-4  crypto">
          <img src="https://workshopsforlife.github.io/assets/icon/cryptocurrency-icons-master/svg/icon/eth.svg" class=""/><span class="px-3">Ethereum</span>
     </button>
 </div>
@@ -804,19 +804,19 @@
 
 <div class="row py-1">
 
-<div class="col-sm-12 col-lg-4 col-md-12 py-2">
-    <button class="btn btn-lg btn-block btn-secondary py-4 ">
+<div class="col-sm-12 col-lg-4 col-md-12 py-2 ">
+    <button id="litecoin" class="btn btn-lg btn-block btn-secondary py-4  crypto">
          <img src="https://workshopsforlife.github.io/assets/icon/cryptocurrency-icons-master/svg/icon/ltc.svg" class=""/></i><span class="px-3" style="max-width: 10px;">Litecoin</span>
     </button>
 </div>
-<div class="col-sm-12 col-lg-4 col-md-12 py-2">
-    <button class="btn btn-lg btn-block btn-secondary py-4 ">
+<div class="col-sm-12 col-lg-4 col-md-12 py-2 ">
+    <button id="stellar" class="btn btn-lg btn-block btn-secondary py-4  crypto">
          <img src="https://workshopsforlife.github.io/assets/icon/cryptocurrency-icons-master/svg/icon/xlm.svg" class=""/><span class="px-3">Stellar
 </span>
     </button>
 </div>
-    <div class="col-sm-12 col-lg-4 col-md-12 py-2">
-    <button class="btn btn-lg btn-block btn-secondary py-4 ">
+    <div class="col-sm-12 col-lg-4 col-md-12 py-2 ">
+    <button id="cardano" class="btn btn-lg btn-block btn-secondary py-4  crypto">
          <img src="https://workshopsforlife.github.io/assets/icon/cryptocurrency-icons-master/svg/icon/ada.svg" class=""/><span class="px-3">Cardano</span>
     </button>
 </div>
@@ -824,25 +824,25 @@
 
 <div class="row py-1">
 
-<div class="col-sm-12 col-lg-4 col-md-12 py-2">
-    <button class="btn btn-lg btn-block btn-secondary py-4 ">
+<div class="col-sm-12 col-lg-4 col-md-12 py-2 ">
+    <button id="neo" class="btn btn-lg btn-block btn-secondary py-4  crypto">
          <img src="https://workshopsforlife.github.io/assets/icon/cryptocurrency-icons-master/svg/icon/neo.svg" class=""/></i><span class="px-3" style="max-width: 10px;">NEO</span>
     </button>
 </div>
-<div class="col-sm-12 col-lg-4 col-md-12 py-2">
-    <button class="btn btn-lg btn-block btn-secondary py-4 ">
+<div class="col-sm-12 col-lg-4 col-md-12 py-2 ">
+    <button id="tron" class="btn btn-lg btn-block btn-secondary py-4  crypto">
          <img src="https://workshopsforlife.github.io/assets/icon/cryptocurrency-icons-master/svg/icon/trx.svg" class=""/></i><span class="px-3">TRON
 </span>
     </button>
 </div>
-    <div class="col-sm-12 col-lg-4 col-md-12 py-2">
-    <button class="btn btn-lg btn-block btn-secondary py-4 ">
+    <div class="col-sm-12 col-lg-4 col-md-12 py-2 ">
+    <button id="monero" class="btn btn-lg btn-block btn-secondary py-4  crypto">
          <img src="https://workshopsforlife.github.io/assets/icon/cryptocurrency-icons-master/svg/icon/xmr.svg" class=""/><span class="px-3">Monero</span>
     </button>
 </div>
 </div>
-    
-</div></div>
+</div>
+                        </div>
 					  </div>
 					  <div class="modal-footer">
 						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -850,10 +850,146 @@
 				</div>
 			  </div>
 			</div>
+<div class="modal fade" id="bitcoin-pay" tabindex="-1" role="dialog" aria-labelledby="bitcoin-payLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content ">
+            <div class="modal-header">
+                <h5 class="modal-title" id="bitcoin-payLabel">Pay with Bitcoin</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-center">
+                <div class="row">
+                    <div class="col">
+                        <h1>What is Bitcoin?</h1>
+                        <button class="btn btn-block btn-lg btn-primary" data-toggle="modal" data-target="#learnAboutBitcoin">Learn all about Bitcoin</button>
+                        <hr class="text-body">
+                    </div>
+                    <div class="col">
+                        <figure>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Bitcoin.svg/1024px-Bitcoin.svg.png" class="img-fluid" width="50px">
+                        </figure>
+                        <span class="font-weight-bold">49.5$ - </span><span class="font-weight-bold">0.00049</span><i class="fa fa-bitcoin"></i>
+                        <p>Please send <span class="bitcoin-amount">0.00049</span> Bitcoin to this adress.</p>
+                        <p class="font-weight-bold">1aldsfkjasdñlkfjsñdlkfjasd
+                            <button class="btn btn-light copy-adress"  data-placement="right"><i class="fa fa-clone font-weight-bold px-2"></i></button></p>
+                        <figure>
+                            <img src="http://pngimg.com/uploads/qr_code/qr_code_PNG2.png" class="img-fluid" width="200px">
+                        </figure>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="learnAboutBitcoin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">What is Bitcoin?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="accordion" id="accordionLearnBitcoin">
+                    <div class="card">
+                        <div class="card-header" id="headingOne">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseLearnOne" aria-expanded="false" aria-controls="collapseOne">
+                                    Learn about Bitcoin.
+                                </button>
+                            </h2>
+                        </div>
+
+                        <div id="collapseLearnOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionLearnBitcoin">
+                            <div class="card-body">
+                                <div class="col-md-8">
+                                    <div class="video-container">
+                                        <iframe width="560" height="315" src="https://www.youtube.com/embed/2X9eJF1nLiY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingTwo">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseLearnTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    How to get a wallet?
+                                </button>
+                            </h2>
+                        </div>
+                        <div id="collapseLearnTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionLearnBitcoin">
+                            <div class="card-body">
+                                <div class="col-md-8">
+                                    <div class="video-container">
+                                        <iframe width="560" height="315" src="https://www.youtube.com/embed/QR3qD15mrdo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingThree">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseLearnThree" aria-expanded="false" aria-controls="collapseThree">
+                                    How to get Bitcoin?
+                                </button>
+                            </h2>
+                        </div>
+                        <div id="collapseLearnThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionLearnBitcoin">
+                            <div class="card-body">
+                                <div class="col-md-8">
+                                    <div class="video-container">
+                                        <iframe width="560" height="315" src="https://www.youtube.com/embed/V9Igzp9K37k" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Flexbox container for aligning the toasts -->
+<div aria-live="polite" aria-atomic="true" class="d-flex justify-content-center align-items-center" style="min-height: 200px;">
+
+    <!-- Then put toasts within -->
+    <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <strong class="mr-auto">Adress Copied</strong>
+            <small>11 mins ago</small>
+            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="toast-body">
+            The bitcoin adress was copied!.
+        </div>
+    </div>
+</div>
+
+
 
             <!-- Start: Testimonials -->
             <div class="testimonials-clean"></div>
             <!-- End: Testimonials -->
+
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
@@ -936,10 +1072,22 @@
 				function xmrPrice(){
 					return getCurrentPrice(xmr_prc_url);
 				}
-				  
-				  
-				  
 			</script>
+
+            <script>
+                $('.crypto').click(function (event) {
+                    let id = this.id;
+                    switch (id) {
+                        case 'bitcoin':
+                            $('#bitcoin-pay').modal('show')
+                    }
+                });
+            </script>
+            <script>
+                $('.copy-adress').click(function(){
+                    $('.toast').toast('show');
+                });
+            </script>
 </body>
 
 </html>
