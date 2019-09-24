@@ -1,0 +1,45 @@
+.cross-price::before, .cross-price::after {
+  content: '';
+  width: 100%;
+  position: absolute;
+  right: 0;
+  top: 50%;
+}
+
+.cross-price::before {
+  border-bottom: 2px solid rgb(137,142,137);
+  -webkit-transform: skewY(-10deg);
+  transform: skewY(-10deg);
+}
+
+@media (max-width:499px) {
+  .container {
+    max-width: 500px;
+  }
+  header.masthead .intro-text .intro-heading {
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 50px;
+    margin-bottom: 25px;
+    font-family: Montserrat,Helvetica Neue,Helvetica,Arial,sans-serif;
+  }
+}
+
+.timeline > li .timeline-image {
+  /*.timeline > li .timeline-image {  position: absolute;*/
+  /*z-index: 100;*/
+  /*left: 0;*/
+  /*width: 80px;*/
+  /*height: 80px;*/
+  /*margin-left: 0;*/
+  /*text-align: center;*/
+  /*color: #fff;*/
+  /*border: 7px solid #e9ecef;*/
+  /*border-radius: 100%;*/
+  background-color: #828282;
+}
+
+a:hover {
+  color: #ffffff;
+}
+
