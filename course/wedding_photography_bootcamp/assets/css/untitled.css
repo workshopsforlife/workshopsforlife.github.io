@@ -25,6 +25,19 @@
   }
 }
 
+@media (max-width:399px) {
+  .container {
+    max-width: 500px;
+  }
+  header.masthead .intro-text .intro-heading {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 50px;
+    margin-bottom: 25px;
+    font-family: Montserrat,Helvetica Neue,Helvetica,Arial,sans-serif;
+  }
+}
+
 .timeline > li .timeline-image {
   /*.timeline > li .timeline-image {  position: absolute;*/
   /*z-index: 100;*/
