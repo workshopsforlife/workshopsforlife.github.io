@@ -3,3 +3,9 @@
     max-width: 50%;
   }
 }
+
+@media (max-width:399px){
+	#index-header-title{
+		font-size: 45px;
+	}
+}
