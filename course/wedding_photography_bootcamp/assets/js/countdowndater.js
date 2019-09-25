@@ -15,8 +15,9 @@ var currentday = currentdate.getDate()
 
 
 var currenthour = currentdate.getHours()
-for(var addhour = 0; addhour<5; addhour++){
-    if(currenthour > 24){
+//console.log(currenthour);
+for(var addhour = 0; addhour < 5; addhour++){
+    if(currenthour >= 24){
 		currenthour = 0;
         if(currentday == 31 && currentmonth == 12){
             currentyear = currentyear + 1;
@@ -84,6 +85,7 @@ for(var addhour = 0; addhour<5; addhour++){
         
     }
     currenthour = currenthour + 1;
+	//console.log(currenthour);
 }
 var currentminute = currentdate.getMinutes();
 for(var addminute = 0; addminute < 30; addminute++){
@@ -125,5 +127,7 @@ if(currentseconds < 10){
 }else{
     datetime = datetime + currentseconds;
 }
+//console.log(datetime);
+//console.log(document.getElementsByClassName("boxed-countdown")[0].getAttribute("data-countdown"));
             document.getElementsByClassName("boxed-countdown")[0].setAttribute("data-countdown",datetime);
 //console.log(datetime);
