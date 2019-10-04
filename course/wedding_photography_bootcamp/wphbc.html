@@ -83,7 +83,7 @@
         <div class="row">
             <div class="col-12 mb-3">
                 <h1 style="font-size: 35px;">49,5$ - <span class="text-secondary font-weight-light cross-price">199$</span></h1>
-                <button class="btn btn-info" data-toggle="modal" data-target="#modal-buy">Buy Class</button>
+                <button class="btn btn-info buy" >Buy Class</button>
             </div>
             <div class="col-12 mb-3">
                 <h1 style="font-size: 10px;">SALE ENDS IN</h1>
@@ -885,17 +885,17 @@
                 <div class="row">
                     <div class="col">
                         <h1>What is Bitcoin?</h1>
-                        <button class="btn btn-block btn-lg btn-primary" data-toggle="modal" data-target="#learnAboutBitcoin">Learn all about Bitcoin</button>
+                        <button class="btn btn-block btn-lg btn-primary learn-bitcoin" data-toggle="modal" data-target="#learnAboutBitcoin">Learn all about Bitcoin</button>
                         <hr class="text-body">
                     </div>
                     <div class="col">
                         <figure>
                             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Bitcoin.svg/1024px-Bitcoin.svg.png" class="img-fluid" width="50px">
                         </figure>
-                        <span class="font-weight-bold">49.5$ - </span><span class="font-weight-bold">0.00049</span><i class="fa fa-bitcoin"></i>
+                        <span class="font-weight-bold">49.5$ - </span><span class="font-weight-bold price-in-btc">0.00049</span><i class="fa fa-bitcoin"></i>
                         <p>Please send <span class="bitcoin-amount">0.00049</span> Bitcoin to this adress.</p>
-                        <p class="font-weight-bold">1aldsfkjasdñlkfjsñdlkfjasd
-                            <button class="btn btn-light copy-adress"  data-placement="right"><i class="fa fa-clone font-weight-bold px-2"></i></button></p>
+                        <p class="font-weight-bold bitcoin-address">1aldsfkjasdñlkfjsñdlkfjasd
+                            <button class="btn btn-light copy-btc-adress"  data-placement="right"><i class="fa fa-clone font-weight-bold px-2"></i></button></p>
                         <figure>
                             <img src="http://pngimg.com/uploads/qr_code/qr_code_PNG2.png" class="img-fluid" width="200px">
                         </figure>
@@ -1045,7 +1045,7 @@
 
 
 				function btcPrice(){
-					return getCurrentPrice(btc_prc_url, 'btc-price');
+					return getCurrentPrice(btc_prc_url, 'price-in-btc');
 				}
 
 				function bchPrice(){
@@ -1086,8 +1086,45 @@
                     let id = this.id;
                     switch (id) {
                         case 'bitcoin':
-                            $('#bitcoin-pay').modal('show')
+                            $('#modal-buy').modal("hide");
+                            $('#modal-buy').on('hidden.bs.modal', function (e) {
+                                $('#bitcoin-pay').modal({focus:true});
+                            })
+                            break;
                     }
+                });
+
+
+
+                $('.learn-bitcoin').click(function(event){
+                    $('#bitcoin-pay').modal('hide');
+                    $('#bitcoin-pay').on('hidden.bs.modal', function (e) {
+                        $('#learnAboutBitcoin').modal({show:true,focus:true});
+                    });
+
+                });
+
+
+
+                $('.buy').click(function(event){
+                    $('#modal-buy').modal({show:true,focus:true});
+                });
+
+            </script>
+
+            <script>
+                $('.copy-btc-adress').click(function () {
+
+                    let bitcoinAdress = document.getElementsByClassName('bitcoin-address');
+                    bitcoinAdress.addEventListener('copy', function (e) {
+                        e.preventDefault();
+                        if (e.clipboardData) {
+                            e.clipboardData.setData('text/plain', 'custom content');
+                        } else if (window.clipboardData) {
+                            window.clipboardData.setData('Text', 'custom content');
+                        }
+
+                    });
                 });
             </script>
 </body>
