@@ -56,3 +56,27 @@ a:hover {
   color: #ffffff;
 }
 
+@media (max-width:1023px){
+  .pay-confirmation-section-down{
+    display: block;
+  }
+}
+
+@media (min-width:1024px){
+  .pay-confirmation-section-down{
+    display: none;
+  }
+}
+
+
+@media (max-width:1023px){
+  .pay-confirmation-section-upon{
+    display: none;
+  }
+}
+
+@media (min-width:1024px){
+  .pay-confirmation-section-upon{
+    display: block;
+  }
+}
