@@ -1139,7 +1139,7 @@
                 var priceBTC = 0;
                 BTCPrice();
                 var walletAddress = '18rnfoQgGo1HqvVQaAN4QnxjYE7Sez9eca';
-                var urlBTCBalance = 'http://api.blockcypher.com/v1/btc/main/addrs/'+walletAddress;
+                var urlBTCBalance = 'https://api.blockcypher.com/v1/btc/main/addrs/'+walletAddress;
                 var getJSONbalance = function(urlBTCBalance, callback) {
                     var xhr = new XMLHttpRequest();
                     xhr.open('GET', urlBTCBalance, true);
