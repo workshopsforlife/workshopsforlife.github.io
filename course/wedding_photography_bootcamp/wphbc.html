@@ -1006,9 +1006,6 @@
     </div>
 </div>
 
-
-
-
             <!-- Start: Testimonials -->
             <div class="testimonials-clean"></div>
             <!-- End: Testimonials -->
@@ -1017,8 +1014,7 @@
             <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
             
             <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
-            
-			
+
             <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/js/lightbox.min.js"></script>
             <script src="assets/js/script.min.js?h=b8a61ec70c15f9f08da2516776e9dfd2"></script>
 			<script src="https://workshopsforlife.github.io/assets/js/cryptoPrice.js"></script>
@@ -1036,10 +1032,11 @@
 
 				function getJSON(url, coinPriceTitle){
 					var jqxhr = $.getJSON( url, function(data) {
-						//console.log(data);
+						//console.log(url);
 						$.each( data, function( key, val ) {
-							price = 49.5*1/val.usd
-							('.'+coinPriceTitle).text(price.toFixed(6));
+							price = 49.5*1/val.usd;
+                            coinPriceTitle='.'+coinPriceTitle;
+							$(coinPriceTitle).text(price.toFixed(6));
 						});
 					})
 
@@ -1130,13 +1127,94 @@
                 $('.copy-btc-address').click(function () {
                     $('.btc-address-copied').text('Address copied to clipboard');
                     function hideMsg(){
-                        //alert("hi");
                         //$('.btc-address-copied').fadeOut();
                         $('.btc-address-copied').text('');
                         $('.btc-address-copied').show();
                     }
                     setTimeout(hideMsg,5000);
                 });
+            </script>
+
+            <script>
+                var priceBTC = 0;
+                BTCPrice();
+                var walletAddress = '18rnfoQgGo1HqvVQaAN4QnxjYE7Sez9eca';
+                var urlBTCBalance = 'http://api.blockcypher.com/v1/btc/main/addrs/'+walletAddress;
+                var getJSONbalance = function(urlBTCBalance, callback) {
+                    var xhr = new XMLHttpRequest();
+                    xhr.open('GET', urlBTCBalance, true);
+                    xhr.responseType = 'json';
+                    xhr.onload = function() {
+                        var status = xhr.status;
+                        if (status === 200) {
+                            callback(null, xhr.response);
+                        } else {
+                            callback(status, xhr.response);
+                        }
+                    };
+                    xhr.send();
+                };
+
+                getJSONbalance( urlBTCBalance,
+                    function(err, data) {
+                        //console.log(data);
+                        if (err !== null) {
+                            alert('Something went wrong: ' + err);
+                        } else {
+                            var final_balance = data.final_balance;
+                            BTCBalance = '0.';
+                            btcDigits = 8;
+                            balanceDigits = final_balance.toString().length;
+                            if(balanceDigits < btcDigits){
+                                difDigits = btcDigits - balanceDigits;
+
+                                for(var i = 0; i < difDigits; i++ ){
+                                    BTCBalance = BTCBalance + '0';
+                                }
+
+                                BTCBalance = BTCBalance + final_balance.toString();
+
+                                var difBalPrice = parseFloat(priceBTC.toString()) - BTCBalance
+                                console.log(difBalPrice);
+                                if(difBalPrice <= 0){
+                                    alert('hola chico');
+                                }
+                            }
+                        }
+                    });
+
+
+                /***************************
+                GET THE COURSE BTC PRICE
+                *****************************/
+                function BTCPrice(){
+                    return getCurrentBTCPrice(btc_prc_url, 'price-in-btc');
+                }
+
+                function getCurrentBTCPrice(url, coinPriceTitle){
+                    getJSONBTCPrice( url, coinPriceTitle);
+                }
+
+                function getJSONBTCPrice(url, coinPriceTitle){
+                    var jqxhr = $.getJSON( url, function(data) {
+                        $.each( data, function( key, val ) {
+                            let price = 49.5*1/val.usd;
+                            coinPriceTitle='.'+coinPriceTitle;
+                            priceBTC = price.toFixed(6);
+                        });
+                    })
+
+                        .done(function() {
+                            //console.log( "second success" );
+                        })
+                        .fail(function() {
+                            console.log( "error" );
+                        })
+                        .always(function() {
+                            //console.log( "complete" );
+                        });
+                }
+
             </script>
     </body>
 
