@@ -887,15 +887,23 @@
                         <h1>What is Bitcoin?</h1>
                         <button class="btn btn-block btn-lg btn-primary learn-bitcoin" data-toggle="modal" data-target="#learnAboutBitcoin">Learn all about Bitcoin</button>
                         <hr class="text-body">
+                        <div class="pay-confirmation-section row">
+                            <div class="col-sm-12">
+                                <h1 style="font-size: medium">Waiting for pay confirmation</h1>
+                                <h3 class="text-secondary" style="font-size: small">The amount must be >= <span class="price-in-btc"></span><i class="fa fa-bitcoin"></i></h3>
+                            </div>
+                        </div>
                     </div>
                     <div class="col">
                         <figure>
                             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Bitcoin.svg/1024px-Bitcoin.svg.png" class="img-fluid" width="50px">
                         </figure>
                         <span class="font-weight-bold">49.5$ - </span><span class="font-weight-bold price-in-btc">0.00049</span><i class="fa fa-bitcoin"></i>
-                        <p>Please send <span class="bitcoin-amount">0.00049</span> Bitcoin to this adress.</p>
-                        <p class="font-weight-bold bitcoin-address">1aldsfkjasdñlkfjsñdlkfjasd
-                            <button class="btn btn-light copy-btc-adress"  data-placement="right"><i class="fa fa-clone font-weight-bold px-2"></i></button></p>
+                        <p>Please send <span class="price-in-btc">0.00049</span> Bitcoin to this adress.</p>
+                        <p class="font-weight-bold text-secondary"><span id="bitcoin-address">1aldsfkjasdñlkfjsñdlkfjasd </span>
+                            <button class="btn btn-light copy-btc-address btn-clipboard" data-original-title="Copy to clipboard"  data-clipboard-target="#bitcoin-address" data-placement="right"><i class="fa fa-clone font-weight-bold px-2"></i></button></p>
+                        <p class="btc-address-copied text-info"></p>
+                        <p class="font-weight-light">Please scan the QR Code</p>
                         <figure>
                             <img src="http://pngimg.com/uploads/qr_code/qr_code_PNG2.png" class="img-fluid" width="200px">
                         </figure>
@@ -1004,6 +1012,7 @@
             <script src="assets/js/script.min.js?h=b8a61ec70c15f9f08da2516776e9dfd2"></script>
 			<script src="https://workshopsforlife.github.io/assets/js/cryptoPrice.js"></script>
 			<script src="assets/js/countdowndater.js"></script>
+            <script src="https://workshopsforlife.github.io/assets/js/clipboard.js-master/dist/clipboard.min.js"></script>
 			
 			<script>
 				btcPrice();
@@ -1113,18 +1122,22 @@
             </script>
 
             <script>
-                $('.copy-btc-adress').click(function () {
+                new ClipboardJS('.copy-btc-address');
 
-                    let bitcoinAdress = document.getElementsByClassName('bitcoin-address');
-                    bitcoinAdress.addEventListener('copy', function (e) {
-                        e.preventDefault();
-                        if (e.clipboardData) {
-                            e.clipboardData.setData('text/plain', 'custom content');
-                        } else if (window.clipboardData) {
-                            window.clipboardData.setData('Text', 'custom content');
-                        }
+            </script>
 
-                    });
+            <script>
+                $('.copy-btc-address').click(function () {
+                    $('.btc-address-copied').text('Address copied to clipboard');
+                    function hideMsg(){
+                        //alert("hi");
+                        //$('.btc-address-copied').fadeOut();
+                        $('.btc-address-copied').text('');
+                        $('.btc-address-copied').show();
+                    }
+                    setTimeout(hideMsg,5000);
+
+
                 });
             </script>
 </body>
