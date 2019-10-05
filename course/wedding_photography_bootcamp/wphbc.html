@@ -1138,55 +1138,64 @@
             <script>
                 var priceBTC = 0;
                 BTCPrice();
-                var walletAddress = '18rnfoQgGo1HqvVQaAN4QnxjYE7Sez9eca';
-                var urlBTCBalance = 'https://api.blockcypher.com/v1/btc/main/addrs/'+walletAddress;
-                var getJSONbalance = function(urlBTCBalance, callback) {
-                    var xhr = new XMLHttpRequest();
-                    xhr.open('GET', urlBTCBalance, true);
-                    xhr.responseType = 'json';
-                    xhr.onload = function() {
-                        var status = xhr.status;
-                        if (status === 200) {
-                            callback(null, xhr.response);
-                        } else {
-                            callback(status, xhr.response);
-                        }
+                $('.crypto').click(function(){
+
+                    var getJSONbalance = function(urlBTCBalance, callback) {
+                        var xhr = new XMLHttpRequest();
+                        xhr.open('GET', urlBTCBalance, true);
+                        xhr.responseType = 'json';
+                        xhr.onload = function() {
+                            var status = xhr.status;
+                            if (status === 200) {
+                                callback(null, xhr.response);
+                            } else {
+                                callback(status, xhr.response);
+                            }
+                        };
+                        xhr.send();
                     };
-                    xhr.send();
-                };
 
-                getJSONbalance( urlBTCBalance,
-                    function(err, data) {
-                        //console.log(data);
-                        if (err !== null) {
-                            alert('Something went wrong: ' + err);
-                        } else {
-                            var final_balance = data.final_balance;
-                            BTCBalance = '0.';
-                            btcDigits = 8;
-                            balanceDigits = final_balance.toString().length;
-                            if(balanceDigits < btcDigits){
-                                difDigits = btcDigits - balanceDigits;
+                    getJSONbalance( urlBTCBalance,
+                        function(err, data) {
+                            //console.log(data);
+                            if (err !== null) {
+                                alert('Something went wrong: ' + err);
+                            } else {
+                                var final_balance = data.final_balance;
+                                BTCBalance = '0.';
+                                btcDigits = 8;
+                                balanceDigits = final_balance.toString().length;
+                                if(balanceDigits < btcDigits){
+                                    difDigits = btcDigits - balanceDigits;
 
-                                for(var i = 0; i < difDigits; i++ ){
-                                    BTCBalance = BTCBalance + '0';
-                                }
+                                    for(var i = 0; i < difDigits; i++ ){
+                                        BTCBalance = BTCBalance + '0';
+                                    }
 
-                                BTCBalance = BTCBalance + final_balance.toString();
+                                    BTCBalance = BTCBalance + final_balance.toString();
 
-                                var difBalPrice = parseFloat(priceBTC.toString()) - BTCBalance
-                                console.log(difBalPrice);
-                                if(difBalPrice <= 0){
-                                    alert('hola chico');
+                                    var difBalPrice = parseFloat(priceBTC.toString()) - BTCBalance
+                                    //console.log(difBalPrice);
+                                    if(difBalPrice <= 0){
+                                        alert('hola chico');
+                                    }else{
+                                        console.log(difBalPrice);
+                                    }
                                 }
                             }
-                        }
-                    });
+                        });
+                });
+
+
 
 
                 /***************************
                 GET THE COURSE BTC PRICE
                 *****************************/
+                var walletAddress = '18rnfoQgGo1HqvVQaAN4QnxjYE7Sez9eca';
+                var urlBTCBalance = 'https://api.blockcypher.com/v1/btc/main/addrs/'+walletAddress;
+
+
                 function BTCPrice(){
                     return getCurrentBTCPrice(btc_prc_url, 'price-in-btc');
                 }
