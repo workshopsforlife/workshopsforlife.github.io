@@ -17,7 +17,9 @@ var currentday = currentdate.getDate()
 var currenthour = currentdate.getHours()
 //console.log(currenthour);
 for(var addhour = 0; addhour < 5; addhour++){
+    //console.log(addhour);
     if(currenthour >= 24){
+        //console.log(currenthour);
 		currenthour = 0;
         if(currentday == 31 && currentmonth == 12){
             currentyear = currentyear + 1;
@@ -87,6 +89,81 @@ for(var addhour = 0; addhour < 5; addhour++){
     currenthour = currenthour + 1;
 	//console.log(currenthour);
 }
+
+//console.log(currenthour);
+
+
+if(currenthour >= 24){
+    //console.log(currenthour);
+    currenthour = 0;
+    if(currentday == 31 && currentmonth == 12){
+        currentyear = currentyear + 1;
+        currentday = 1;
+        currentmonth = 1;
+    }else{
+        var cday = 0;
+        switch(currentmonth){
+            case 1:
+                cday = 31;
+                break;
+            case 2:
+                cday = 28;
+                break;
+            case 3:
+                cday = 31;
+                break;
+            case 4:
+                cday = 30;
+                break;
+            case 5:
+                cday = 31;
+                break;
+            case 6:
+                cday = 30;
+                break;
+            case 7:
+                cday = 31;
+                break;
+            case 8:
+                cday = 31;
+                break;
+            case 9:
+                cday = 30;
+                break;
+            case 10:
+                cday = 31;
+                break;
+            case 11:
+                cday = 30;
+                break;
+            case 12:
+                cday = 31;
+                break;
+        }
+        if(currentday == cday){
+            currentday = 1
+            if(currentmonth == 12){
+                currentmonth = 1;
+            }
+            else{
+                currentmonth + 1;
+            }
+        }
+        else{
+            currentday = currentday + 1;
+            if(currentmonth == 12){
+                currentmonth = 1;
+            }
+            else{
+                currentmonth + 1;
+            }
+        }
+    }
+
+}
+
+
+
 var currentminute = currentdate.getMinutes();
 for(var addminute = 0; addminute < 30; addminute++){
     if (currentminute > 59){
