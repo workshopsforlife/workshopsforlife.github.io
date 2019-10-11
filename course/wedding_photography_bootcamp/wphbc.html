@@ -890,17 +890,17 @@
                         <hr class="text-body">
                         <div class="pay-confirmation-section-upon row">
                             <div class="col-sm-12">
-                                <h1 style="font-size: medium">Waiting for pay confirmation</h1>
+                                <h1 class="confirmations" style="font-size: medium">Waiting for pay confirmation</h1>
                                 <h3 class="text-secondary" style="font-size: small">The amount must be >= <span class="price-in-btc"></span><i class="fa fa-bitcoin"></i></h3>
-                                <img class="img-fluid py-3" src="https://workshopsforlife.github.io/assets/img/crypto/bitcoin-animation (1).gif">
+                                <img class="img-fluid py-3 crypto-charge" src="https://workshopsforlife.github.io/assets/img/crypto/bitcoin-animation (1).gif">
                             </div>
                         </div>
                     </div>
                     <div class="col">
                         <figure>
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Bitcoin.svg/1024px-Bitcoin.svg.png" class="img-fluid" width="50px">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Bitcoin.svg/1024px-Bitcoin.svg.png" class="img-fluid crypto-charge" width="50px">
                         </figure>
-                        <span class="font-weight-bold">49.5$ - </span><span class="font-weight-bold price-in-btc">0.00049</span><i class="fa fa-bitcoin"></i>
+                        <span class="font-weight-bold ">49.5$ - </span><span class="font-weight-bold price-in-btc">0.00049</span><i class="fa fa-bitcoin"></i>
                         <p>Please send <span class="price-in-btc">0.00049</span> Bitcoin to this adress.</p>
                         <p class="font-weight-bold text-secondary"><span id="bitcoin-address">1aldsfkjasdñlkfjsñdlkfjasd </span>
                             <button class="btn btn-light copy-btc-address btn-clipboard" data-original-title="Copy to clipboard"  data-clipboard-target="#bitcoin-address" data-placement="right"><i class="fa fa-clone font-weight-bold px-2"></i></button></p>
@@ -913,9 +913,9 @@
                     <div class="container-fluid pay-confirmation-section-down">
                         <div class="row">
                             <div class="col-sm-12 text-center">
-                                <h1 style="font-size: medium">Waiting for pay confirmation</h1>
-                                <h3 class="text-secondary" style="font-size: small">The amount must be >= <span class="price-in-btc"></span><i class="fa fa-bitcoin"></i></h3>
-                                <img class="img-fluid py-3" src="https://workshopsforlife.github.io/assets/img/crypto/bitcoin-animation (1).gif">
+                                <h1  style="font-size: medium" class="confirmations">Waiting for pay confirmation</h1>
+                                <span class="text-secondary confirmation-message" style="font-size: small">The amount must be >= <span class="price-in-btc"></span><i class="fa fa-bitcoin"></i></span>
+                                <img class="img-fluid py-3 crypto-charge" src="https://workshopsforlife.github.io/assets/img/crypto/bitcoin-animation (1).gif">
                             </div>
                         </div>
                     </div>
@@ -1202,6 +1202,8 @@
                         xhr.send();
                     };
 
+
+
                     getJSONbalance( urlBTCBalance,
                         function(err, data) {
                             //console.log(data);
@@ -1223,16 +1225,63 @@
 
                                     var difBalPrice = parseFloat(priceBTC.toString()) - BTCBalance
                                     //console.log(difBalPrice);
+                                    difBalPrice = 0;
                                     if(difBalPrice <= 0){
-                                        clearInterval(BTCPriceId);
-                                        alert('hola chico');
+                                        setInterval(getTXRFS,60000);
+                                        clearInterval(BTCBalanceId);
+                                        $('.crypto-charge').css('display','none');
+
                                     }else{
                                         console.log("BalanceBTC: "+BTCBalance+" - Precio en BTC: "+priceBTC+" -  Precio en BTC menos BalanceBTC : "+difBalPrice);
                                     }
                                 }
                             }
                         });
+
                 }
+
+
+
+                function getTXRFS(){
+                    var getJSONtxrfs = function(urlBTCBalance, callback) {
+                        var xhr = new XMLHttpRequest();
+                        xhr.open('GET', urlBTCBalance, true);
+                        xhr.responseType = 'json';
+                        xhr.onload = function() {
+                            var status = xhr.status;
+                            if (status === 200) {
+                                callback(null, xhr.response);
+                            } else {
+                                callback(status, xhr.response);
+                            }
+                        };
+                        xhr.send();
+                    };
+
+
+
+                    getJSONtxrfs( urlBTCBalance,
+                        function(err, data) {
+                            //console.log(data);
+                            console.log('entro');
+                            if (err !== null) {
+                                alert('Something went wrong: ' + err);
+                            } else {
+                                var confirmations = data.txrefs[0].confirmations;
+                                $('.confirmations').text(confirmations);
+                                if(confirmations > 3){
+                                    $('.confirmations').text('Got 3 confirmations.');
+                                    $('.confirmation-message').text(', we sent to your email email@email.com the links for download the course. Please verify it and don\'t forget verify the span box.');
+                                    console.log('listo ya tienes 3 confirmaciones');
+                                }
+
+                            }
+                        });
+
+                }
+
+
+
                 $('.BTCPayMethodClose').click(function () {
                     clearInterval(BTCBalanceId);
                 });
