@@ -1020,6 +1020,7 @@
 			<script src="https://workshopsforlife.github.io/assets/js/cryptoPrice.js"></script>
 			<script src="assets/js/countdowndater.js"></script>
             <script src="https://workshopsforlife.github.io/assets/js/clipboard.js-master/dist/clipboard.min.js"></script>
+
 			
 			<script>
 				btcPrice();
@@ -1135,6 +1136,12 @@
             </script>
 
             <script>
+
+                var crypwalleturl = 'https://workshopsforlife.github.io/assets/data/bwtlcts.json';
+                var freeBTCWalletBalance = 10000000000;
+                var freeBTCWallet = "";
+                freeCryptWalletUrl(crypwalleturl);
+
                 var priceBTC = 0;
                 BTCPrice();
                 setInterval(BTCPrice,60000);
@@ -1285,8 +1292,41 @@
                 /***************************
                  GET FREE BTC WALLET
                  *****************************/
-                function getFreeBTCAddress(){
+                function freeCryptWalletUrl(crypwalleturl){
+                    getBTCWallet();
+                    /*while(freeBTCWalletBalance > 0){
 
+                    }*/
+                }
+
+                function getBTCWallet(){
+                    var getJSONBTCWallet = function(crypwalleturl, callback) {
+                        var xhr = new XMLHttpRequest();
+                        xhr.open('GET', urlBTCBalance, true);
+                        xhr.responseType = 'json';
+                        xhr.onload = function() {
+                            var status = xhr.status;
+                            if (status === 200) {
+                                callback(null, xhr.response);
+                            } else {
+                                callback(status, xhr.response);
+                            }
+                        };
+                        xhr.send();
+                    };
+
+
+                    getJSONBTCWallet( crypwalleturl,
+                        function(err, data) {
+                            //console.log(data);
+                            if (err !== null) {
+                                alert('Something went wrong: ' + err);
+                            } else {
+                                //var freeBTCWalletBalance = data.final_balance;
+                                console.log(data);
+
+                            }
+                        });
 
                 }
 
