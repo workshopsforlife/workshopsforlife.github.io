@@ -1,0 +1,1 @@
+let BTCWalletAdress = ['18rnfoQgGo1HqvVQaAN4QnxjYE7Sez9eca']

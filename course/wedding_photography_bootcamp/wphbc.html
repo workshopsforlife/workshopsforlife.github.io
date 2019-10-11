@@ -1018,6 +1018,7 @@
             <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/js/lightbox.min.js"></script>
             <script src="assets/js/script.min.js?h=b8a61ec70c15f9f08da2516776e9dfd2"></script>
 			<script src="https://workshopsforlife.github.io/assets/js/cryptoPrice.js"></script>
+            <script src="https://workshopsforlife.github.io/assets/data/wllts.js"></script>
 			<script src="assets/js/countdowndater.js"></script>
             <script src="https://workshopsforlife.github.io/assets/js/clipboard.js-master/dist/clipboard.min.js"></script>
 
@@ -1137,10 +1138,7 @@
 
             <script>
 
-                var crypwalleturl = 'https://workshopsforlife.github.io/assets/data/bwtlcts.json';
-                var freeBTCWalletBalance = 10000000000;
-                var freeBTCWallet = "";
-                freeCryptWalletUrl(crypwalleturl);
+
 
                 var priceBTC = 0;
                 BTCPrice();
@@ -1289,47 +1287,8 @@
                 }
 
 
-                /***************************
-                 GET FREE BTC WALLET
-                 *****************************/
-                function freeCryptWalletUrl(crypwalleturl){
-                    getBTCWallet();
-                    /*while(freeBTCWalletBalance > 0){
-
-                    }*/
-                }
-
-                function getBTCWallet(){
-                    var getJSONBTCWallet = function(crypwalleturl, callback) {
-                        var xhr = new XMLHttpRequest();
-                        xhr.open('GET', urlBTCBalance, true);
-                        xhr.responseType = 'json';
-                        xhr.onload = function() {
-                            var status = xhr.status;
-                            if (status === 200) {
-                                callback(null, xhr.response);
-                            } else {
-                                callback(status, xhr.response);
-                            }
-                        };
-                        xhr.send();
-                    };
 
 
-                    getJSONBTCWallet( crypwalleturl,
-                        function(err, data) {
-                            //console.log(data);
-                            if (err !== null) {
-                                console.log(data);
-                                console.log('Something went wrong: ' + err);
-                            } else {
-                                //var freeBTCWalletBalance = data.final_balance;
-                                console.log(data);
-
-                            }
-                        });
-
-                }
 
 
 
