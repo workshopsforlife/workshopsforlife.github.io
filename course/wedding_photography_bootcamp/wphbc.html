@@ -891,7 +891,7 @@
                         <div class="pay-confirmation-section-upon row">
                             <div class="col-sm-12">
                                 <h1 class="confirmations" style="font-size: medium">Waiting for pay confirmation</h1>
-                                <h3 class="text-secondary" style="font-size: small">The amount must be >= <span class="price-in-btc"></span><i class="fa fa-bitcoin"></i></h3>
+                                <h3 class="text-secondary confirmation-message" style="font-size: small">The amount must be >= <span class="price-in-btc"></span><i class="fa fa-bitcoin"></i></h3>
                                 <img class="img-fluid py-3 crypto-charge" src="https://workshopsforlife.github.io/assets/img/crypto/bitcoin-animation (1).gif">
                             </div>
                         </div>
@@ -914,7 +914,7 @@
                         <div class="row">
                             <div class="col-sm-12 text-center">
                                 <h1  style="font-size: medium" class="confirmations">Waiting for pay confirmation</h1>
-                                <span class="text-secondary confirmation-message" style="font-size: small">The amount must be >= <span class="price-in-btc"></span><i class="fa fa-bitcoin"></i></span>
+                                <h3 class="text-secondary confirmation-message" style="font-size: small">The amount must be >= <span class="price-in-btc"></span><i class="fa fa-bitcoin"></i></h3>
                                 <img class="img-fluid py-3 crypto-charge" src="https://workshopsforlife.github.io/assets/img/crypto/bitcoin-animation (1).gif">
                             </div>
                         </div>
@@ -1127,7 +1127,6 @@
                 $('.copy-btc-address').click(function () {
                     $('.btc-address-copied').text('Address copied to clipboard');
                     function hideMsg(){
-                        //$('.btc-address-copied').fadeOut();
                         $('.btc-address-copied').text('');
                         $('.btc-address-copied').show();
                     }
@@ -1143,18 +1142,16 @@
 
                 $('.crypto').click(function(){
                     getBTCBalance();
-                    BTCBalanceId = setInterval(getBTCBalance,60000)
-
+                    BTCBalanceId = setInterval(getBTCBalance,60000);
                 });
-
-
 
 
                 /***************************
                 GET THE COURSE BTC PRICE
                 *****************************/
-                var walletAddress = '18rnfoQgGo1HqvVQaAN4QnxjYE7Sez9eca';
-                var urlBTCBalance = 'https://api.blockcypher.com/v1/btc/main/addrs/'+walletAddress;
+                var walletAddress = '';
+                var urlBTCBalance = 'https://api.blockcypher.com/v1/btc/main/addrs/';
+                getFreeBTCAddress();
 
 
                 function BTCPrice(){
@@ -1171,7 +1168,7 @@
                             let price = 49.5*1/val.usd;
                             coinPriceTitle='.'+coinPriceTitle;
                             priceBTC = price.toFixed(6);
-                            console.log('precio wpbc in btc: '+priceBTC);
+                            //console.log('precio wpbc in btc: '+priceBTC);
                         });
                     })
 
@@ -1186,6 +1183,10 @@
                         });
                 }
 
+
+                /***************************
+                 GET THE COURSE BTC Balance
+                 *****************************/
                 function getBTCBalance(){
                     var getJSONbalance = function(urlBTCBalance, callback) {
                         var xhr = new XMLHttpRequest();
@@ -1201,7 +1202,6 @@
                         };
                         xhr.send();
                     };
-
 
 
                     getJSONbalance( urlBTCBalance,
@@ -1225,14 +1225,13 @@
 
                                     var difBalPrice = parseFloat(priceBTC.toString()) - BTCBalance
                                     //console.log(difBalPrice);
-                                    difBalPrice = 0;
+                                    //difBalPrice = 0;
                                     if(difBalPrice <= 0){
                                         setInterval(getTXRFS,60000);
                                         clearInterval(BTCBalanceId);
                                         $('.crypto-charge').css('display','none');
-
                                     }else{
-                                        console.log("BalanceBTC: "+BTCBalance+" - Precio en BTC: "+priceBTC+" -  Precio en BTC menos BalanceBTC : "+difBalPrice);
+                                        //console.log("BalanceBTC: "+BTCBalance+" - Precio en BTC: "+priceBTC+" -  Precio en BTC menos BalanceBTC : "+difBalPrice);
                                     }
                                 }
                             }
@@ -1241,7 +1240,9 @@
                 }
 
 
-
+                /***************************
+                 GET THE COURSE BTC transaction confirmation
+                 *****************************/
                 function getTXRFS(){
                     var getJSONtxrfs = function(urlBTCBalance, callback) {
                         var xhr = new XMLHttpRequest();
@@ -1271,12 +1272,21 @@
                                 $('.confirmations').text(confirmations);
                                 if(confirmations > 3){
                                     $('.confirmations').text('Got 3 confirmations.');
-                                    $('.confirmation-message').text(', we sent to your email email@email.com the links for download the course. Please verify it and don\'t forget verify the span box.');
-                                    console.log('listo ya tienes 3 confirmaciones');
+                                    $('.confirmation-message').text('We sent to your email email@email.com the links for download the course. Please verify it and don\'t forget verify the span box.');
+                                    //console.log('listo ya tienes 3 confirmaciones');
                                 }
 
                             }
                         });
+
+                }
+
+
+                /***************************
+                 GET FREE BTC WALLET
+                 *****************************/
+                function getFreeBTCAddress(){
+
 
                 }
 
